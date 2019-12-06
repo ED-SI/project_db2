@@ -42,6 +42,6 @@ echo "Todos os dados foram digitados corretamente!";
 include 'insere.inc';
 }
 ?>
-
+<input type="button" value="Cadastro novo livro" onclick="javascript: location.href='index.php';" />
 </body>
 </html>
