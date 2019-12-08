@@ -1,33 +1,27 @@
 function AddItem(){
 	var titulo = $("#titulo").val();
-	var nPaginas = $("#npaginas").val();
-	var nCopias = $("#ncopias").val();
-	var servico = $("#servico").val();
+	var autor = $("#autor").val();
+	var editora = $("#editora").val();
+	var forma = $("#forma").val();
 	var data = $("#data").val();
-	var valor = $("#valor").val();
-	var fv = $("#fv").is(':checked');
 	
 	var tabela = document.getElementById("tabela");//nossa tabela
 	var linha = tabela.insertRow(1);//guarda o objeto tabela e insere uma linha
 	
-	//criar 7 células variáveis que representam a quantidade de variáveis da tabela
+	//criar 7 cï¿½lulas variï¿½veis que representam a quantidade de variï¿½veis da tabela
 	var cell1 = linha.insertCell(0);
 	var cell2 = linha.insertCell(1);
 	var cell3 = linha.insertCell(2);
 	var cell4 = linha.insertCell(3);
 	var cell5 = linha.insertCell(4);
-	var cell6 = linha.insertCell(5);
-	var cell7 = linha.insertCell(6);
 	
-	//inserir código html na células conforme a ordem da interface
-	//inserir a variável título etc.
+	//inserir cï¿½digo html na cï¿½lulas conforme a ordem da interface
+	//inserir a variï¿½vel tï¿½tulo etc.
 	cell1.innerHTML = titulo;
-	cell2.innerHTML = nPaginas;
-	cell3.innerHTML = nCopias;
-	cell4.innerHTML = servico;
-	cell5.innerHTML = fv;
-	cell6.innerHTML = data;
-	cell7.innerHTML = valor;
+	cell2.innerHTML = autor;
+	cell3.innerHTML = editora;
+	cell4.innerHTML = forma;
+	cell5.innerHTML = data;
 	
 	exibirMsg();
 }
