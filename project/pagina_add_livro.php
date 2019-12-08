@@ -57,27 +57,6 @@
 			</div>
 			</div>
 			<button class="btn btn-success" onclick="AddItem();"><span class="glyphicon glyphicon-plus"></span>Adicionar</button>
-			</br>
-			</br>
-			<div class="panel panel-primary">
-			<div class="panel-heading"><strong>Livros Adicionados</strong></div>
-			<table class="table table-bordered" id="tabela">
-				<thead>
-					<tr>
-						<th>Título</th>
-						<th>Autor</th>
-						<th>Editora</th>
-						<th>Forma de Recebimento</th>
-						<th>Data de Recebimento</th>
-					</tr>
-				</thead>
-			<tbody>
-
-			
-			</tbody>
-			
-			</table>
-			</div>
 			</div>
 			</div>
 			</div>
