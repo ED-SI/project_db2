@@ -2,7 +2,7 @@
 <html lang = "pt-br">
 <head>
 	<meta charset="utf-8"/>
-	<title>Cadastro de Livros</title>
+	<title>Sistema de Gerenciamento para Bibliotecas (SGB)</title>
 	<link href="css/bootstrap.css" rel="stylesheet"/>
 	<link href="css/style.css" rel="stylesheet"/>
 	<script src="js/jquery.js"></script>
@@ -22,19 +22,19 @@
 				<div class="col-xs-4">
 					<div class="form-group">
 						<label>Titulo</label>
-						<input type="text" class="form-control" id="titulo" value="test" name="titulo">
+						<input type="text" class="form-control" id="titulo" placeholder="digitar" name="titulo">
 					</div>
 				</div>
 				<div class="col-xs-2">
 					<div class="form-group">
 						<label>Autor</label>
-						<input type="text" class="form-control" id="autor" value="test" name="autor">
+						<input type="text" class="form-control" id="autor" placeholder="digitar" name="autor">
 					</div>
 				</div>
 				<div class="col-xs-2">
 					<div class="form-group">
 						<label>Editora</label>
-						<input type="text" class="form-control" id="editora" value="test" name="editora">
+						<input type="text" class="form-control" id="editora" placeholder="digitar" name="editora">
 					</div>
 				</div>
 				<div class="col-xs-4">
@@ -50,14 +50,16 @@
 			<div class="row">
 				<div class="col-xs-4">
 					<div class="form-group">
-						<label>Data de recebimento</label>
+						<label>Data de Recebimento</label>
 						<input type="date" class="form-control" id="data" name="data">
 					</div>
 				</div>
 			</div>
 			</div>
 			<button class="btn btn-success" onclick="AddItem();"><span class="glyphicon glyphicon-plus"></span>Adicionar</button>
-			</div>
+			<a href="busca_livro.php" class="btn btn-success pull-right">Buscar livro</a>
+			</br>
+			</br>
 			</div>
 			</div>
 		</form>
