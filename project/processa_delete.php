@@ -1,5 +1,5 @@
 <?php
-$id = $POST['id'];
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 $servername = "localhost";
 $username = "root";
@@ -16,8 +16,10 @@ try {
 
     // use exec() because no results are returned
     $conn->exec($sql);
-    echo "Livro deletado com sucesso";
-    header("location:http://localhost/projetobdbiblioteca/index.php");
+    echo '<script>alert("Registro deletado com sucesso!")</script>';
+    echo '<script type="text/javascript">
+              window.location="http://localhost/projetobdbiblioteca/index.php";
+              </script>';
     }
 catch(PDOException $e)
     {

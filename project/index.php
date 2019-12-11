@@ -1,8 +1,11 @@
 <?php
-    $servername = "127.0.0.1";
+session_start();
+include('autenticacao.php');
+
+    $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "projeto_bd2";
+    $dbname = "biblioteca";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -15,7 +18,7 @@
 <html lang = "pt-br">
 <head>
 	<meta charset="utf-8"/>
-	<title>Sistema de Gerenciamento para Bibliotecas (SGB)</title>
+	<title>Cadastro de Livros</title>
 	<link href="css/bootstrap.css" rel="stylesheet"/>
 	<link href="css/style.css" rel="stylesheet"/>
 	<script src="js/jquery.js"></script>
@@ -24,27 +27,25 @@
 </head>
 <body>
 <div class="container">
-    <h1><img src="img/impressao.png" heigth="50" width="50"> Consulta de Livros</h1>
-    <div class="panel panel-primary">
-        <div class="panel-heading"><strong>Selecione apenas um filtro de pesquisa:</strong></div>
-        <br>
-            <form method="post" action="processa_consulta.php">
-            <div class="panel panel-body">      
+	<h1><img src="img/impressao.png" heigth="50" width="50"> Cadastro de Livros</h1>
+	<div class="panel panel-primary">
+		<div class="panel-heading"><strong>Pesquisar livro</strong></div>
+            <form method="post" action="update.php">
+            <div class="panel panel-body">		
                 <div class="breadcrumb">
                     <div class="row">
                         <div class="col-xs-6">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="procura" placeholder="Pesquise pelo filtro selecionado acima..." name="data[procura]">
+					        <div class="input-group">
+						        <input type="text" class="form-control" id="procura" placeholder="pesquisar" name="data[procura]">
                                 <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-primary" name="search">
+                                    <button type="submit" class="btn btn-primary">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </span>
-                            </form>
-                            </div>
-                        </div>
+					        </div>
+				        </div>
                         <div class="col-xs-6">
-                            <a href="processa_consulta.php" class="btn btn-success pull-right">Cadastrar novo livro</a>
+                            <a href="insert.php" class="btn btn-success pull-right">Cadastrar novo livro</a>
                         </div>
                     </div>
                 </div>
@@ -76,10 +77,10 @@
                                                 "<td>".$row["forma_recebimento"]."</td>".
                                                 "<td>".$row["data_recebimento"]."</td>".
                                                 "<td>
-                                                <a class=\"btn btn-warning btn-xs\" href=update.php\">Editar</a>
-                                                <a class=\"btn btn-danger btn-xs\" href=delete.php\">Excluir</a>
-                                                </td>
-                                            </tr>";
+                                                <a class=\"btn btn-warning btn-xs\" href='update.php?id=" .$row['id']." '>Editar</a>
+                                                <a class=\"btn btn-danger btn-xs\" href='processa_delete.php?id=" .$row['id']." '>Excluir</a>
+                                                </td></tr>";
+                                        
                                     }
                                 } else {
                                     echo "0 resultados";
@@ -92,20 +93,28 @@
                         </table>
                     </div>
                     <div class="breadcrumb">
+                    <div class="form-group">
+                    
                     <div class="row">
-                        <div class="col-xs-4">
-                            <ul class="pagination">
-                                <li><a href="#">&lt; Anterior</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">Próximo &gt;</a></li>
-                            </ul>
+                            <div class="col-xs-12">
+                                <a href="logout.php" class="btn btn-success pull-right">Sair</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <ul class="pagination">
+                                    <li><a href="#">&lt; Anterior</a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">Próximo &gt;</a></li>
+                                </ul>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
 			    </div>
 	        </div>
+            </form>
 	    </div>
     </div>
 </div>

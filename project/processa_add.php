@@ -5,7 +5,7 @@
     $forma = $_POST['forma'];
     $data = $_POST['data'];
 
-    $servidor = "localhost";
+    $servidor = "127.0.0.1";
     $usuario = "root";
     $senha = "";
     $banco = "projeto_bd2";
@@ -17,18 +17,21 @@
         if(empty($titulo) OR empty($autor) OR empty($editora) OR empty($forma) OR empty($data)){
             echo '<script>alert("Você não preencheu todos os campos do cadastro. Clique em OK e digite novamente.")</script>';
             echo '<script type="text/javascript">
-              window.location="http://localhost/projetobdbiblioteca/cadastra_livro.php";
+              window.location="http://localhost/projetobdbiblioteca/index.php";
               </script>';
        } else {
            $sql = "insert into livro (titulo, autor, editora, forma_recebimento, data_recebimento) values ('$titulo', '$autor', '$editora', '$forma', '$data')";
        }
        $con->exec($sql);
-       echo '<script>alert("Livro cadastrado com sucesso!")</script>';
+       echo '<script>alert("Livro cadastrado com sucesso! Retornando à tela de cadastro.")</script>';
        echo '<script type="text/javascript">
-              window.location="http://localhost/projetobdbiblioteca/cadastra_livro.php";
+              window.location="http://localhost/projetobdbiblioteca/pag_add.php";
               </script>';
        }
     catch(PDOException $e)
         {
         echo "Conexão falhou: " . $e->getMessage();
         }
+    
+    $conn = null;
+    ?>

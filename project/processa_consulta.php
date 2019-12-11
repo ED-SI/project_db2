@@ -1,48 +1,25 @@
  <?php
-    $search = $_POST['$search'];
+    $busca = $_POST['busca'];
  
-    $servidor = "localhost";
+    $servidor = "127.0.0.1";
     $usuario = "root";
     $senha = "";
     $banco = "projeto_bd2";
 
-    //O que falta: pegar o texto do campo de pesquisa e buscar algum registro em todo o banco que tenha o texto do input da pesquisa
+    $conn = mysqli_connect($servidor, $usuario, $senha, $banco);
+    if(!$conn){
+        die('Não foi possível conectar ao banco de dados: ' . mysql_error());
+    }
 
-    $sql = "SELECT * FROM livro WHERE titulo like $search";
-    $result = $conn->query($sql);
+    $query = "SELECT * FROM livro WHERE (titulo = '$busca') OR (autor = '$busca') OR (editora = '$busca') OR (forma_recebimento = '$busca') OR (data_recebimento = '$busca') ";
+
+    $result = mysqli_query($conn, $query);
     
-    echo "$result";
-
-    /*if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<td>".$row["id"]."</td>".
-                 "<td>".$row["titulo"]."</td>".
-                 "<td>".$row["autor"]."</td>".
-                 "<td>".$row["editora"]."</td>".
-                 "<td>".$row["forma_recebimento"]."</td>".
-                 "<td>".$row["data_recebimento"]."</td>";
-            }
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            echo "Id: ".$row["id"]." - Titulo: ".$row["titulo"]." - Autor: ".$row["autor"]." - Editora: ".$row["editora"]." - Forma de Recebimento: ".$row["forma_recebimento"]." Data de Recebimento: ".$row["data_recebimento"]."<br>";
+        }
     } else {
         echo "0 resultados";
     }
-
-
-    /*if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<tr><td>".$row["id"]."</td>".
-                 "<td>".$row["titulo"]."</td>".
-                 "<td>".$row["autor"]."</td>".
-                 "<td>".$row["editora"]."</td>".
-                 "<td>".$row["forma_recebimento"]."</td>".
-                 "<td>".$row["data_recebimento"]."</td>".
-                 "<td>
-                 <a class=\"btn btn-warning btn-xs\" href=update.php\">Editar</a>
-                 <a class=\"btn btn-danger btn-xs\" href=delete.php\">Excluir</a>
-                 </td>
-                 </tr>";
-            }
-    } else {
-        echo "0 resultados";
-    }*/
-    $conn->close();
 ?>             
